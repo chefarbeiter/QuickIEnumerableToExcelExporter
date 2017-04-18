@@ -4,6 +4,12 @@ namespace QuickIEnumerableToExcelExporter
 {
     public static class Extension
     {
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="target"></param>
         public static void ExportToExcel<T>(this IEnumerable<T> enumerable, string target)
             => ExportToExcel(enumerable, target, new ExportConfiguration());
 
