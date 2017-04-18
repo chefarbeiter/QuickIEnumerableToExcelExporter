@@ -13,6 +13,13 @@ namespace QuickIEnumerableToExcelExporter
         public static void ExportToExcel<T>(this IEnumerable<T> enumerable, string target)
             => ExportToExcel(enumerable, target, new ExportConfiguration());
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="target"></param>
+        /// <param name="configuration"></param>
         public static void ExportToExcel<T>(this IEnumerable<T> enumerable, string target, ExportConfiguration configuration)
         {
             // get metadata
