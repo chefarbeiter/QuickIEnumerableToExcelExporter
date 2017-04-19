@@ -27,11 +27,32 @@ using System;
 
 namespace QuickIEnumerableToExcelExporter
 {
+    /// <summary>
+    /// Marks an property to be exported to excel with special configuration.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class ExportToExcelAttribute : Attribute
     {
-        /*
-         * Header, Ignore, Format, DisplayMemberPath
-         */
+        /// <summary>
+        /// Gets or sets the header of the column for this property.
+        /// Default is the name of the property.
+        /// </summary>
+        public string Header { get; set; }
+
+        /// <summary>
+        /// If set to true, this property will not be exported.
+        /// Default is false.
+        /// </summary>
+        public bool Ignore { get; set; }
+
+        /// <summary>
+        /// Gets or sets a path to a property on the child object to serve as the export value of the object.
+        /// </summary>
+        public string DisplayMemberPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets a string that specifies how to format the value
+        /// </summary>
+        public string StringFormat { get; set; }
     }
 }

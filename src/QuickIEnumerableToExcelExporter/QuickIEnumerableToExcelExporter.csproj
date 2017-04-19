@@ -45,6 +45,7 @@
     <Compile Include="ExportPropertyInfo.cs" />
     <Compile Include="ExportToExcelAttribute.cs" />
     <Compile Include="Extension.cs" />
+    <Compile Include="MetadataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

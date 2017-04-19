@@ -48,6 +48,7 @@ namespace QuickIEnumerableToExcelExporter
         public static void ExportToExcel<T>(this IEnumerable<T> enumerable, string target, ExportConfiguration configuration)
         {
             // get metadata
+            var metadata = MetadataReader.ReadMetadata(typeof(T));
 
             // write to intermediate
 

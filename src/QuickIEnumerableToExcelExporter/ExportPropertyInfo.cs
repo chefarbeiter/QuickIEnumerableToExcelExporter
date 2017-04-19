@@ -29,7 +29,12 @@ namespace QuickIEnumerableToExcelExporter
 {
     internal class ExportPropertyInfo
     {
-        public PropertyInfo Property { get; set; }
+        public ExportPropertyInfo(PropertyInfo propertyInfo)
+        {
+            this.PropertyInfo = propertyInfo;
+        }
+
+        public PropertyInfo PropertyInfo { get; }
 
         public ExportPropertyInfo InnerProperty { get; set; }
     }
