@@ -43,10 +43,13 @@
     <Compile Include="ExportConfiguration.cs" />
     <Compile Include="ExportProperty.cs" />
     <Compile Include="ExportPropertyInfo.cs" />
+    <Compile Include="ExportRow.cs" />
     <Compile Include="ExportToExcelAttribute.cs" />
+    <Compile Include="ExportValue.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="MetadataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValuesReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Excel\" />

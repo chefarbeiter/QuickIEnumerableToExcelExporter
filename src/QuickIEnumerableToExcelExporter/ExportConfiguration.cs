@@ -35,5 +35,11 @@ namespace QuickIEnumerableToExcelExporter
         /// The default value is false.
         /// </summary>
         public bool ExportNullAsString { get; set; } = false;
+
+        /// <summary>
+        /// If set to true, a row with headers will be exported.
+        /// The default value is true.
+        /// </summary>
+        public bool WriteHeaderRow { get; set; } = true;
     }
 }

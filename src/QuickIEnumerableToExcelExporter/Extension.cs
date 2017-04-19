@@ -27,6 +27,9 @@ using System.Collections.Generic;
 
 namespace QuickIEnumerableToExcelExporter
 {
+    /// <summary>
+    ///
+    /// </summary>
     public static class Extension
     {
         /// <summary>
@@ -51,6 +54,8 @@ namespace QuickIEnumerableToExcelExporter
             var metadata = MetadataReader.ReadMetadata(typeof(T));
 
             // write to intermediate
+            var valuesReader = new ValuesReader<T>(metadata, configuration);
+            var values = valuesReader.ReadValues(enumerable);
 
             // convert intermediate to excel
         }
