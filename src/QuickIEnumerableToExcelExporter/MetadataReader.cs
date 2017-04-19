@@ -24,10 +24,8 @@
  */
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace QuickIEnumerableToExcelExporter
 {
@@ -36,37 +34,33 @@ namespace QuickIEnumerableToExcelExporter
         public static List<ExportProperty> ReadMetadata(Type exportType)
         {
             // Prepare output
-            var exportProperties = new ConcurrentBag<ExportProperty>();
+            var exportProperties = new List<ExportProperty>();
 
             // Get properties and prepare
-            var properties = exportType.GetProperties().ToList();
-
-            Parallel.ForEach(
-                properties,
-                property =>
+            exportType.GetProperties().ToList().ForEach(property =>
+            {
+                // Create with defaults
+                var exportProperty = new ExportProperty
                 {
-                    // Create with defaults
-                    var exportProperty = new ExportProperty
-                    {
-                        Header = property.Name,
-                        Property = new ExportPropertyInfo(property)
-                    };
+                    Header = property.Name,
+                    Property = new ExportPropertyInfo(property)
+                };
 
-                    // Apply settings from attribute if given
-                    var exportAttribute = property.GetCustomAttributes(typeof(ExportToExcelAttribute), false).FirstOrDefault() as ExportToExcelAttribute;
-                    if (exportAttribute != null && !exportAttribute.Ignore)
-                    {
-                        ApplyExportAttributeToProperty(exportAttribute, exportProperty);
-                    }
+                // Apply settings from attribute if given
+                var exportAttribute = property.GetCustomAttributes(typeof(ExportToExcelAttribute), false).FirstOrDefault() as ExportToExcelAttribute;
+                if (exportAttribute != null && !exportAttribute.Ignore)
+                {
+                    ApplyExportAttributeToProperty(exportAttribute, exportProperty);
+                }
 
-                    // Add to collection if not ignored
-                    if (exportAttribute == null || !exportAttribute.Ignore)
-                    {
-                        exportProperties.Add(exportProperty);
-                    }
-                });
+                // Add to collection if not ignored
+                if (exportAttribute == null || !exportAttribute.Ignore)
+                {
+                    exportProperties.Add(exportProperty);
+                }
+            });
 
-            return exportProperties.ToList();
+            return exportProperties;
         }
 
         private static void ApplyExportAttributeToProperty(ExportToExcelAttribute attribute, ExportProperty property)
