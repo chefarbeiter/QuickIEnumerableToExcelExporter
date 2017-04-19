@@ -66,11 +66,23 @@ namespace UnitTests
             Assert.Equal("Value", thirdLevel.PropertyInfo.Name);
         }
 
+        [Fact]
+        public void ReadStringFormatFromAttribute()
+        {
+            var metadata = MetadataReader.ReadMetadata(typeof(TestExportItem));
+
+            var idProperty = metadata.Single(m => m.Header == "Identity");
+            var nameProperty = metadata.Single(m => m.Header == "Name");
+
+            Assert.Equal("#,#0", idProperty.Format);
+            Assert.Null(nameProperty.Format);
+        }
+
         private class TestExportItem
         {
             public string Name { get; set; }
 
-            [ExportToExcel(Header = "Identity")]
+            [ExportToExcel(Header = "Identity", StringFormat = "#,#0")]
             public int Id { get; set; }
 
             [ExportToExcel(DisplayMemberPath = "Year")]
