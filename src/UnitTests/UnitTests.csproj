@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="MetadataReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestTypes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
