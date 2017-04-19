@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickIEnumerableToExcelExporter", "QuickIEnumerableToExcelExporter\QuickIEnumerableToExcelExporter.csproj", "{C6B6D807-DDD5-4270-9F10-8329A8240C9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{4E002330-7F23-485D-8ACA-633DDE888A68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C6B6D807-DDD5-4270-9F10-8329A8240C9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B6D807-DDD5-4270-9F10-8329A8240C9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B6D807-DDD5-4270-9F10-8329A8240C9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E002330-7F23-485D-8ACA-633DDE888A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E002330-7F23-485D-8ACA-633DDE888A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E002330-7F23-485D-8ACA-633DDE888A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E002330-7F23-485D-8ACA-633DDE888A68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
