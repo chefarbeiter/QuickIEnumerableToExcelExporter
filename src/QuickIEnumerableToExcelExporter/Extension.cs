@@ -24,6 +24,7 @@
  */
 
 using System.Collections.Generic;
+using QuickIEnumerableToExcelExporter.Excel;
 
 namespace QuickIEnumerableToExcelExporter
 {
@@ -49,15 +50,34 @@ namespace QuickIEnumerableToExcelExporter
         /// <param name="target"></param>
         /// <param name="configuration"></param>
         public static void ExportToExcel<T>(this IEnumerable<T> enumerable, string target, ExportConfiguration configuration)
+            => Export<T, ExcelExporter>(enumerable, target, configuration);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <typeparam name="TItem"></typeparam>
+        /// <typeparam name="TExporter"></typeparam>
+        /// <param name="enumerable"></param>
+        /// <param name="target"></param>
+        /// <param name="configuration"></param>
+        private static void Export<TItem, TExporter>(IEnumerable<TItem> enumerable, string target, ExportConfiguration configuration)
+            where TExporter : IExporter, new()
         {
             // get metadata
-            var metadata = MetadataReader.ReadMetadata(typeof(T));
+            var metadata = MetadataReader.ReadMetadata(typeof(TItem));
 
             // write to intermediate
-            var valuesReader = new ValuesReader<T>(metadata, configuration);
+            var valuesReader = new ValuesReader<TItem>(metadata, configuration);
             var values = valuesReader.ReadValues(enumerable);
 
-            // convert intermediate to excel
+            // export intermediate to target
+            var exporter = new TExporter()
+            {
+                TargetPath = target,
+                Rows = values
+            };
+
+            exporter.Export();
         }
     }
 }
