@@ -9,8 +9,8 @@ namespace UnitTests
         [Fact]
         public void AddWorksheet()
         {
-            var workbook = new ExcelWorkbook();
-            var worksheet = workbook.AddWorksheet("test");
+            var workbook = new ExcelWorkbook("test");
+            var worksheet = workbook.Worksheet;
 
             Assert.NotNull(worksheet);
             Assert.Equal("test", worksheet.Name);
@@ -19,10 +19,8 @@ namespace UnitTests
         [Fact]
         public void AddWorksheetWithoutName()
         {
-            var workbook = new ExcelWorkbook();
-
-            Assert.Throws<ArgumentNullException>(() => workbook.AddWorksheet(null));
-            Assert.Throws<ArgumentNullException>(() => workbook.AddWorksheet(String.Empty));
+            Assert.Throws<ArgumentNullException>(() => new ExcelWorkbook(null));
+            Assert.Throws<ArgumentNullException>(() => new ExcelWorkbook(String.Empty));
         }
     }
 }

@@ -33,24 +33,26 @@ namespace QuickIEnumerableToExcelExporter.Excel
     internal class ExcelWorksheet
     {
         /// <summary>
-        /// Collection of cells within this worksheet
-        /// </summary>
-        private readonly Dictionary<CellKey, ExcelCell> _cells;
-
-        /// <summary>
         /// Initializes a new instance of the class
         /// </summary>
         /// <param name="name">The name of the worksheet</param>
         public ExcelWorksheet(string name)
         {
-            _cells = new Dictionary<CellKey, ExcelCell>();
+            Cells = new Dictionary<CellKey, ExcelCell>();
             Name = name;
         }
+
+        #region Properties
 
         /// <summary>
         /// Gets the name of the worksheet
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Collection of cells within this worksheet
+        /// </summary>
+        internal Dictionary<CellKey, ExcelCell> Cells { get; }
 
         /// <summary>
         /// Gets the cell at the given position.
@@ -64,16 +66,18 @@ namespace QuickIEnumerableToExcelExporter.Excel
             {
                 var key = new CellKey(row, column);
 
-                if (_cells.ContainsKey(key))
+                if (Cells.ContainsKey(key))
                 {
-                    return _cells[key];
+                    return Cells[key];
                 }
 
                 var cell = new ExcelCell(row, column);
-                _cells.Add(key, cell);
+                Cells.Add(key, cell);
 
                 return cell;
             }
         }
+
+        #endregion Properties
     }
 }

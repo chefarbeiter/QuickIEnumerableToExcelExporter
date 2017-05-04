@@ -52,18 +52,17 @@ namespace QuickIEnumerableToExcelExporter.Excel
             if (string.IsNullOrEmpty(TargetPath)) throw new ArgumentNullException(nameof(TargetPath));
             if (Rows == null) throw new ArgumentNullException(nameof(Rows));
 
-            var workbook = new ExcelWorkbook();
-            var worksheet = workbook.AddWorksheet("Export");
+            var workbook = new ExcelWorkbook("Export");
             var rowsCount = Rows.Count();
 
             for (var rowIndex = 1; rowIndex <= rowsCount; rowIndex++)
             {
-                var row = Rows.ElementAt(rowIndex);
+                var row = Rows.ElementAt(rowIndex - 1);
 
                 for (var columnIndex = 1; columnIndex <= row.Values.Count; columnIndex++)
                 {
-                    var column = row.Values[columnIndex];
-                    var cell = worksheet[rowIndex, columnIndex];
+                    var column = row.Values[columnIndex - 1];
+                    var cell = workbook.Worksheet[rowIndex, columnIndex];
 
                     cell.Value = column.Value;
                     cell.IsBold = row.IsHeaderRow;

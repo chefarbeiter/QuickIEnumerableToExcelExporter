@@ -38,6 +38,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excel\CellKey.cs" />
@@ -45,6 +46,7 @@
     <Compile Include="Excel\ExcelExporter.cs" />
     <Compile Include="Excel\ExcelWorkbook.cs" />
     <Compile Include="Excel\ExcelWorksheet.cs" />
+    <Compile Include="Excel\ExcelXmlTemplates.cs" />
     <Compile Include="ExportConfiguration.cs" />
     <Compile Include="ExportProperty.cs" />
     <Compile Include="ExportPropertyInfo.cs" />
