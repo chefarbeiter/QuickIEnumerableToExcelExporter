@@ -24,7 +24,10 @@
  */
 
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using QuickIEnumerableToExcelExporter.Excel;
+
+[assembly: InternalsVisibleTo("UnitTests")]
 
 namespace QuickIEnumerableToExcelExporter
 {
